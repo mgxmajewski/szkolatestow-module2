@@ -24,20 +24,23 @@
 #     double netPrice;
 # }
 
-class VatService:
-    def __init__(self, vat_value=0.23):
-        self.vat_value = vat_value
+class VatService(object):
+    def __init__(self, vatValue=0.23):
+        self.vatValue = vatValue
 
-    def get_gross_price_for_default_vat(self, product):
-        return self.get_gross_price(product.net_price, self.vat_value)
+    def getGrossPriceForDefaultVat(self, product):
+        return self.getGrossPrice(product.getNetPrice(), self.vatValue)
 
-    def get_gross_price(self, net_price, vat_value):
-        if vat_value > 1:
-            raise ValueError("Vat can't exceed 1. " + vat_value + " is invalid")
-        return net_price * (1 + vat_value)
+    def getGrossPrice(self, netPrice, vatValue):
+        if vatValue > 1:
+            raise ValueError
+
+        return netPrice * (1 + vatValue)
 
 
-class Product:
-    def __init__(self, id, net_price):
+class Product(object):
+    def __init__(self, id, netPrice):
         self.id = id
-        self.net_price = net_price
+        self.netPrice = netPrice
+
+
