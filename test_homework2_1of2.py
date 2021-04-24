@@ -18,7 +18,6 @@ def test_get_gross_price():
     # Given
     vatService = VatService()
     # When
-    vatService.vatValue = 0.08
-    result = vatService.getGrossPrice(10.00, vatService.vatValue)
+    result = vatService.getGrossPrice(10.00, 0.08)
     # Then
     assert_that(result).is_equal_to(10.8)
