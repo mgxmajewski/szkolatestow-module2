@@ -49,3 +49,7 @@ class Product:
         return self.netPrice
 
 
+# vatService = VatService()
+# product = Product(uuid, 20.00)
+#
+# print(vatService.getGrossPrice(10.00, 0.08))
