@@ -23,12 +23,14 @@
 #     string id;
 #     double netPrice;
 # }
+import uuid
 
-class VatService(object):
+
+class VatService:
     def __init__(self, vatValue=0.23):
         self.vatValue = vatValue
 
-    def getGrossPriceForDefaultVat(self, product):
+    def getGrossPriceForDefaultVat(self, product) -> float:
         return self.getGrossPrice(product.getNetPrice(), self.vatValue)
 
     def getGrossPrice(self, netPrice, vatValue):
@@ -38,9 +40,12 @@ class VatService(object):
         return netPrice * (1 + vatValue)
 
 
-class Product(object):
+class Product:
     def __init__(self, id, netPrice):
         self.id = id
         self.netPrice = netPrice
+
+    def getNetPrice(self):
+        return self.netPrice
 
 
