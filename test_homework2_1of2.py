@@ -14,5 +14,11 @@ def test_get_gross_price_for_default_vat():
     assert_that(result).is_equal_to(24.60)
 
 
-# def test_get_gross_price():
-#     assert False
+def test_get_gross_price():
+    # Given
+    vatService = VatService()
+    # When
+    vatService.vatValue = 0.08
+    result = vatService.getGrossPrice(10.00, vatService.vatValue)
+    # Then
+    assert_that(result).is_equal_to(10.8)
