@@ -23,7 +23,6 @@
 #     string id;
 #     double netPrice;
 # }
-import uuid
 
 
 class VatService:
@@ -33,7 +32,8 @@ class VatService:
     def get_gross_price_for_default_vat(self, product) -> float:
         return self.get_gross_price(product.get_net_price(), self.vatValue)
 
-    def get_gross_price(self, net_price, vat_value):
+    @staticmethod
+    def get_gross_price(net_price, vat_value):
         if vat_value > 1:
             raise ValueError
 
@@ -47,9 +47,3 @@ class Product:
 
     def get_net_price(self):
         return self.netPrice
-
-
-# vatService = VatService()
-# product = Product(uuid, 20.00)
-#
-# print(vatService.getGrossPrice(10.00, 0.08))
