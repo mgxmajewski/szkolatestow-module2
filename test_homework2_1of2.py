@@ -8,7 +8,7 @@ class TestClass:
 
     def test_get_gross_price_for_default_vat(self):
         # Given
-        self.vatService = VatService()
+        self.set_up()
         self.vatRate = 20.00
         product = self.get_product_with_price()
         # When
@@ -16,10 +16,9 @@ class TestClass:
         # Then
         assert result == 24.60
 
-
     def test_get_gross_price(self):
         # Given
-        self.vatService = VatService()
+        self.set_up()
         self.vatRate = 10.00
         product = self.get_product_with_price()
         # When
@@ -29,3 +28,6 @@ class TestClass:
 
     def get_product_with_price(self):
         return Product(uuid, self.vatRate)
+
+    def set_up(self):
+        self.vatService = VatService()
