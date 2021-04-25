@@ -1,7 +1,7 @@
 import pytest
-from homework2_1of2 import VatService, Product
 import uuid
 from assertpy import assert_that
+from homework2_1of2 import VatService, Product
 
 
 class TestClass:
@@ -35,6 +35,6 @@ class TestClass:
         # Given
         product = self.get_product_with_price(10.00)
         vat_rate = 1.1
-        # then
+        # Then
         assert_that(self.vat_service.get_gross_price).raises(Exception)\
             .when_called_with(product.get_net_price(), vat_rate)
