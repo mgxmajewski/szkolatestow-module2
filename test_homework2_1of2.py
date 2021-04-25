@@ -8,7 +8,7 @@ class TestClass:
         # Given
         self.vatService = VatService()
         self.vatRate = 20.00
-        product = Product(uuid, self.vatRate)
+        product = self.get_product_with_price()
         # When
         result = self.vatService.getGrossPriceForDefaultVat(product)
         # Then
@@ -19,8 +19,11 @@ class TestClass:
         # Given
         self.vatService = VatService()
         self.vatRate = 10.00
-        product = Product(uuid, self.vatRate)
+        product = self.get_product_with_price()
         # When
         result = self.vatService.getGrossPrice(product.getNetPrice(), 0.08)
         # Then
         assert result == 10.80
+
+    def get_product_with_price(self):
+        return Product(uuid, self.vatRate)
