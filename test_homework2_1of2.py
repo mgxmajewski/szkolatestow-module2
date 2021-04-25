@@ -10,7 +10,8 @@ class TestClass:
     def set_up(self):
         self.vatService = VatService()
 
-    def get_product_with_price(self, net_price):
+    @staticmethod
+    def get_product_with_price(net_price):
         return Product(uuid, net_price)
 
     def test_get_gross_price_for_default_vat(self):
