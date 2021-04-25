@@ -4,9 +4,10 @@ from assertpy import assert_that
 
 class TestClass:
 
+    vatService = VatService()
+
     def test_get_gross_price_for_default_vat(self):
         # Given
-        self.vatService = VatService()
         self.vatRate = 20.00
         product = self.get_product_with_price()
         # When
@@ -17,7 +18,6 @@ class TestClass:
 
     def test_get_gross_price(self):
         # Given
-        self.vatService = VatService()
         self.vatRate = 10.00
         product = self.get_product_with_price()
         # When
