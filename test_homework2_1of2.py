@@ -20,12 +20,13 @@ class TestClass:
         # When
         result = self.vatService.getGrossPriceForDefaultVat(product)
         # Then
-        assert result == 24.60
+        assert_that(result).is_equal_to(24.60)
 
     def test_get_gross_price(self):
         # Given
         product = self.get_product_with_price(10.00)
+        vat_rate = 0.08
         # When
-        result = self.vatService.getGrossPrice(product.getNetPrice(), 0.08)
+        result = self.vatService.getGrossPrice(product.getNetPrice(), vat_rate)
         # Then
-        assert result == 10.80
+        assert_that(result).is_equal_to(10.80)
