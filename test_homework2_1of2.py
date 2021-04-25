@@ -8,7 +8,7 @@ class TestClass:
 
     @pytest.fixture(autouse=True)
     def set_up(self):
-        self.vatService = VatService()
+        self.vat_service = VatService()
 
     @staticmethod
     def get_product_with_price(net_price):
@@ -18,7 +18,7 @@ class TestClass:
         # Given
         product = self.get_product_with_price(20.00)
         # When
-        result = self.vatService.getGrossPriceForDefaultVat(product)
+        result = self.vat_service.get_gross_price_for_default_vat(product)
         # Then
         assert_that(result).is_equal_to(24.60)
 
@@ -27,6 +27,6 @@ class TestClass:
         product = self.get_product_with_price(10.00)
         vat_rate = 0.08
         # When
-        result = self.vatService.getGrossPrice(product.getNetPrice(), vat_rate)
+        result = self.vat_service.get_gross_price(product.get_net_price(), vat_rate)
         # Then
         assert_that(result).is_equal_to(10.80)

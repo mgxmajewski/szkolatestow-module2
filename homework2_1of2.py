@@ -27,25 +27,25 @@ import uuid
 
 
 class VatService:
-    def __init__(self, vatValue=0.23):
-        self.vatValue = vatValue
+    def __init__(self, vat_value=0.23):
+        self.vatValue = vat_value
 
-    def getGrossPriceForDefaultVat(self, product) -> float:
-        return self.getGrossPrice(product.getNetPrice(), self.vatValue)
+    def get_gross_price_for_default_vat(self, product) -> float:
+        return self.get_gross_price(product.get_net_price(), self.vatValue)
 
-    def getGrossPrice(self, netPrice, vatValue):
-        if vatValue > 1:
+    def get_gross_price(self, net_price, vat_value):
+        if vat_value > 1:
             raise ValueError
 
-        return netPrice * (1 + vatValue)
+        return net_price * (1 + vat_value)
 
 
 class Product:
-    def __init__(self, id, netPrice):
-        self.id = id
-        self.netPrice = netPrice
+    def __init__(self, product_id, net_price):
+        self.id = product_id
+        self.netPrice = net_price
 
-    def getNetPrice(self):
+    def get_net_price(self):
         return self.netPrice
 
 
