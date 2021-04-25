@@ -36,4 +36,5 @@ class TestClass:
         product = self.get_product_with_price(10.00)
         vat_rate = 1.1
         # then
-        assert_that(self.vat_service.get_gross_price).raises(Exception).when_called_with(product, vat_rate)
+        assert_that(self.vat_service.get_gross_price).raises(Exception)\
+            .when_called_with(product.get_net_price(), vat_rate)
