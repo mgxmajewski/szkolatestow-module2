@@ -26,12 +26,12 @@ class Product:
     def get_net_price(self):
         return self.net_price
 
-
-class VatProviderInterface:
-    @classmethod
-    def get_default_vat(cls):
-        pass
-
-    @classmethod
-    def get_vat_for_type(cls, product_type):
-        pass
+#
+# class VatProviderInterface:
+#     @classmethod
+#     def get_default_vat(cls):
+#         pass
+#
+#     @classmethod
+#     def get_vat_for_type(cls, product_type):
+#         pass
