@@ -5,7 +5,6 @@ from assertpy import assert_that
 from homework2_2of2 import VatService, Product
 
 
-
 class TestClass:
 
     @pytest.fixture(autouse=True)
@@ -25,4 +24,15 @@ class TestClass:
         result = self.vat_service.get_gross_price_for_default_vat(product)
         # Then
         assert_that(result).is_equal_to(24.60)
+
+    def test_get_gross_price(self):
+        # Given
+        product = self.get_product_with_price(10.00, 'book')
+        self.vat_provider.get_default_vat.return_value = 0.08
+        # When
+        result = self.vat_service.get_gross_price_for_default_vat(product)
+        # Then
+        assert_that(result).is_equal_to(10.80)
+
+
 
