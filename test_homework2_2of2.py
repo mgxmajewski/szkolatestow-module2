@@ -30,9 +30,10 @@ class TestClass:
         product = self.get_product_with_price(10.00, 'book')
         self.vat_provider.get_default_vat.return_value = 0.08
         # When
-        result = self.vat_service.get_gross_price_for_default_vat(product)
+        result = self.vat_service.get_gross_price(product.get_net_price(), product.product_type)
         # Then
         assert_that(result).is_equal_to(10.80)
+
 
 
 
