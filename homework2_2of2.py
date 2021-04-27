@@ -26,6 +26,9 @@ class Product:
     def get_net_price(self):
         return self.net_price
 
+    def get_product_type(self):
+        return self.product_type
+
 #
 # class VatProviderInterface:
 #     @classmethod
