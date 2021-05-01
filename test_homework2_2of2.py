@@ -42,8 +42,9 @@ class TestClass:
         # When
         result = self.vat_service.get_gross_price
         # Then
-        assert_that(result).raises(TypeError).when_called_with(product.get_net_price(),
-                                                               product.get_product_type())
+        assert_that(result).raises(TypeError) \
+            .when_called_with(product.get_net_price(), product.get_product_type()) \
+            .is_equal_to("Vat can't be string")
 
     def test_if_get_gross_price_raise_value_exception_on_negative(self):
         # Given
@@ -52,8 +53,11 @@ class TestClass:
         # When
         result = self.vat_service.get_gross_price
         # Then
-        assert_that(result).raises(ValueError).when_called_with(product.get_net_price(),
-                                                                product.get_product_type())
+        assert_that(result).raises(ValueError)\
+            .when_called_with(product.get_net_price(), product.get_product_type())\
+            .is_equal_to("Vat can't be negative")
+
+
 
 
 
