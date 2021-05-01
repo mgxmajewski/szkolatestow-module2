@@ -11,9 +11,12 @@ class VatService:
 
     @staticmethod
     def calculate_gross_price(net_price, vat_value) -> float:
+        if type(vat_value) is str:
+            raise TypeError
         if vat_value > 1:
             raise ValueError
-
+        if vat_value < 0:
+            raise ValueError
         return round(net_price * (1 + vat_value), 4)
 
 
