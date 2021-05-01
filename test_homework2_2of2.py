@@ -57,7 +57,16 @@ class TestClass:
             .when_called_with(product.get_net_price(), product.get_product_type())\
             .is_equal_to("Vat can't be negative")
 
-
+    def test_if_get_gross_price_raise_value_exception_on_exceeding_one(self):
+        # Given
+        product = self.get_product_with_price(10.00, 'book')
+        self.vat_provider.get_vat_for_type.return_value = 2
+        # When
+        result = self.vat_service.get_gross_price
+        # Then
+        assert_that(result).raises(ValueError) \
+            .when_called_with(product.get_net_price(), product.get_product_type()) \
+            .is_equal_to("Vat can't be bigger than one")
 
 
 
