@@ -31,13 +31,3 @@ class Product:
 
     def get_product_type(self):
         return self.product_type
-
-#
-# class VatProviderInterface:
-#     @classmethod
-#     def get_default_vat(cls):
-#         pass
-#
-#     @classmethod
-#     def get_vat_for_type(cls, product_type):
-#         pass
